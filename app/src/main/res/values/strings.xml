@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GetShelter</string>
+    <string name="login">LOGIN</string>
 </resources>
