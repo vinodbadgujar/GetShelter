@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "339250801100",
+    "firebase_url": "https://getshelter.firebaseio.com",
+    "project_id": "getshelter",
+    "storage_bucket": "getshelter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339250801100:android:515f52382190f9f0669569",
+        "android_client_info": {
+          "package_name": "com.example.hello.getshelter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339250801100-tur4q20qmcqiphe3hsaenea458nfq289.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hello.getshelter",
+            "certificate_hash": "b2b47c97bdc78048a9bc8ee29197c63269416382"
+          }
+        },
+        {
+          "client_id": "339250801100-i9soanpfg6297cd8cmpqpaiif0qp966i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJgA5QgWFViMW_KlVUp6BImBJ8Td_eTCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339250801100-i9soanpfg6297cd8cmpqpaiif0qp966i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
