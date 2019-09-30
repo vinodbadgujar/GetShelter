@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/own_signup"
         android:layout_width="155dp"
         android:layout_height="39dp"
         android:layout_marginStart="8dp"
@@ -18,7 +18,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_style"
-        android:text="Login"
+        android:text="SIGN UP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/own_eamil_sign"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0.306" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/own_name_sign"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -90,7 +90,7 @@
         app:layout_constraintVertical_bias="0.208" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/own_mob_sign"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -110,7 +110,7 @@
         app:layout_constraintVertical_bias="0.44" />
 
     <EditText
-        android:id="@+id/editText18"
+        android:id="@+id/own_pass_sign"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -129,7 +129,7 @@
         app:layout_constraintVertical_bias="0.577" />
 
     <EditText
-        android:id="@+id/editText19"
+        android:id="@+id/own_cnfpass_sign"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -148,4 +148,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.714" />
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

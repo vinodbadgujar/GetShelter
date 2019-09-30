@@ -56,15 +56,15 @@ public class Customer_Login extends AppCompatActivity implements View.OnClickLis
         String Password = editTextPassword.getText().toString().trim();
         String Email = editTextEmail.getText().toString().trim();
 
-        if (Password.isEmpty()){
-            editTextPassword.setError("Password is required");
-            editTextPassword.requestFocus();
-            return;
-        }
-
         if (Email.isEmpty()){
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
+            return;
+        }
+
+        if (Password.isEmpty()){
+            editTextPassword.setError("Password is required");
+            editTextPassword.requestFocus();
             return;
         }
 
