@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "339250801100-nk19k1fsn20v50pc7oic9b62ltl0630s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hello.getshelter",
+            "certificate_hash": "9a56298deb0b0462d5fddedc7261f83d81d60a95"
+          }
+        },
+        {
           "client_id": "339250801100-tur4q20qmcqiphe3hsaenea458nfq289.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
