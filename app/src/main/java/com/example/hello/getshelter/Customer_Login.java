@@ -1,10 +1,10 @@
 package com.example.hello.getshelter;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -61,19 +61,16 @@ public class Customer_Login extends AppCompatActivity implements View.OnClickLis
             editTextEmail.requestFocus();
             return;
         }
-
-        if (Password.isEmpty()){
-            editTextPassword.setError("Password is required");
-            editTextPassword.requestFocus();
-            return;
-        }
-
         if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
             editTextEmail.setError("Please Enter valid email");
             editTextEmail.requestFocus();
             return;
         }
-
+        if (Password.isEmpty()){
+            editTextPassword.setError("Password is required");
+            editTextPassword.requestFocus();
+            return;
+        }
 
         progressBar.setVisibility(View.VISIBLE);
 
