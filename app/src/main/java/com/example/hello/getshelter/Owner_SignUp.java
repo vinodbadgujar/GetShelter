@@ -60,16 +60,7 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
             editTextName.requestFocus();
             return;
         }
-        if (Password.isEmpty()){
-            editTextPassword.setError("Password is required");
-            editTextPassword.requestFocus();
-            return;
-        }
-        if (Password.length()<6){
-            editTextPassword.setError("Minimum length of the password should be 6");
-            editTextPassword.requestFocus();
-            return;
-        }
+
         if (Email.isEmpty()){
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
@@ -81,6 +72,7 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
             editTextEmail.requestFocus();
             return;
         }
+
         if (Mobile.isEmpty()){
             editTextPhone.setError("Mobile is required");
             editTextPhone.requestFocus();
@@ -91,8 +83,21 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
             editTextPhone.requestFocus();
             return;
         }
+
+        if (Password.isEmpty()){
+            editTextPassword.setError("Password is required");
+            editTextPassword.requestFocus();
+            return;
+        }
+        if (Password.length()<6){
+            editTextPassword.setError("Minimum length of the password should be 6");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+
         if (ConfirmPassword.isEmpty()){
-            editTextCnfPass.setError("Please confirm the password");
+            editTextCnfPass.setError("Please confirm your password");
             editTextCnfPass.requestFocus();
             return;
         }

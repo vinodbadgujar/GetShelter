@@ -66,18 +66,18 @@ public class Owner_Login extends AppCompatActivity implements View.OnClickListen
             return;
         }
 
-
+        if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
+            editTextEmail.setError("Please Enter valid email");
+            editTextEmail.requestFocus();
+            return;
+        }
         if (Password.isEmpty()){
             editTextPassword.setError("Password is required");
             editTextPassword.requestFocus();
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()){
-            editTextEmail.setError("Please Enter valid email");
-            editTextEmail.requestFocus();
-            return;
-        }
+
 
 
         progressBar.setVisibility(View.VISIBLE);
