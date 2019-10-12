@@ -5,10 +5,14 @@ import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -51,7 +55,9 @@ import java.util.UUID;
 public class addimage extends AppCompatActivity {
         FirebaseStorage storage;
         StorageReference storageReference;
-
+        private FirebaseAuth mAuth;
+    DatabaseReference databaseShelter;
+        private EditText scost,speoples;
         private Button btnChoose,btnUpload;
         private ImageView imageview;
         private Uri filePath;
@@ -63,9 +69,17 @@ public class addimage extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_addimage);
 
+            scost = (EditText) findViewById(R.id.cost);
+            speoples = (EditText) findViewById(R.id.maximumpeople);
+
             btnChoose = (Button) findViewById(R.id.btnChoose);
             imageview = (ImageView) findViewById(R.id.imgView);
             btnUpload = (Button) findViewById(R.id.save);
+
+
+            mAuth=FirebaseAuth.getInstance();
+            databaseShelter= FirebaseDatabase.getInstance().getReference("Shelters");
+
 
             storage = FirebaseStorage.getInstance();
             storageReference = storage.getReference();
@@ -76,7 +90,6 @@ public class addimage extends AppCompatActivity {
                     chooseImage();
                 }
             });
-
             btnUpload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,14 +97,29 @@ public class addimage extends AppCompatActivity {
                 }
             });
 
-           btnUpload=(Button) findViewById(R.id.save);
-           btnUpload.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openOwnerPage();
-                }
-            });
+
         }
+
+    private void adddetails(String cost, String peoples) {
+        if(cost.isEmpty()){
+            scost.setError("Required");
+            scost.requestFocus();
+            return;
+        }
+        if(peoples.isEmpty()){
+            scost.setError("Required");
+            speoples.requestFocus();
+            return;
+        }
+        else{
+            String u_id=mAuth.getCurrentUser().getUid();
+            databaseShelter = FirebaseDatabase.getInstance().getReference().child("Shelters").child(u_id);
+            databaseShelter.child("Cost").setValue(cost);
+            databaseShelter.child("maximum_peoples").setValue(peoples);
+        }
+
+
+    }
 
         public void openOwnerPage(){
         Intent intent=new Intent(this,OwnerPage.class);
@@ -133,8 +161,9 @@ public class addimage extends AppCompatActivity {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
                 progressDialog.setTitle("Uploading...");
                 progressDialog.show();
+                String user_id = mAuth.getCurrentUser().getUid();
 
-                StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+                StorageReference ref = storageReference.child(user_id.toString()+".JPEG");
                 ref.putFile(filePath)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -156,10 +185,19 @@ public class addimage extends AppCompatActivity {
                                 double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
                                         .getTotalByteCount());
                                 progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                                if (progress==100){
+                                    final String cost = scost.getText().toString().trim();
+                                    final String peoples = speoples.getText().toString().trim();
+
+                                    adddetails(cost,peoples);
+                                    openOwnerPage();
+                                }
+
                             }
                         });
             }
         }
 
 
-    }
+
+}

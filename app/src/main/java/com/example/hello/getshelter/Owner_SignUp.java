@@ -116,10 +116,12 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
                     Intent intent = new Intent(Owner_SignUp.this, OwnerPage.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                    String id=databaseOwner.push().getKey();
-                    Owner own= new Owner(id,Name,Password,Email,Mobile);
+                   // String id=databaseOwner.push().getKey();
+                    Owner own= new Owner(Name,Password,Email,Mobile);
 
-                    databaseOwner.child(id).setValue(own);
+                   // databaseOwner.child(id).setValue(own);
+                    String uid = task.getResult().getUser().getUid();
+                    databaseOwner.child(uid).setValue(own);
                     Toast.makeText(getApplicationContext(), "Account Created Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }else {
@@ -134,7 +136,7 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
     }
 
     class Owner{
-        String OwnerId;
+       // String OwnerId;
         String Name;
         String Password;
         String Email ;
@@ -144,17 +146,17 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
 
         }
 
-        public Owner(String OwnerId, String name, String password, String email, String mobile) {
-            this.OwnerId = OwnerId;
+        public Owner( String name, String password, String email, String mobile) {
+           // this.OwnerId = OwnerId;
             this.Name = name;
             this.Password = password;
             this.Email = email;
             this.Mobile = mobile;
         }
 
-        public String getOwnerId() {
+       /* public String getOwnerId() {
             return OwnerId;
-        }
+        }*/
 
         public String getName() {
             return Name;
