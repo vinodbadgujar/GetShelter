@@ -83,8 +83,19 @@ public class addimage extends AppCompatActivity {
                     uploadImage();
                 }
             });
-            
 
+           btnUpload=(Button) findViewById(R.id.save);
+           btnUpload.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openOwnerPage();
+                }
+            });
+        }
+
+        public void openOwnerPage(){
+        Intent intent=new Intent(this,OwnerPage.class);
+        startActivity(intent);
         }
 
     private void chooseImage() {

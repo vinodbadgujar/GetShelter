@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class OwnerPage extends AppCompatActivity {
-    private Button b1;
+    private Button b1,b2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,9 +25,21 @@ public class OwnerPage extends AppCompatActivity {
             }
         });
 
+        b2=(Button) findViewById(R.id.addedshelter);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openallshelter();
+            }
+        });
     }
     public void openAddshelter(){
         Intent intent=new Intent(this,addShelter.class);
+        startActivity(intent);
+    }
+
+    public void openallshelter(){
+        Intent intent=new Intent(this,all_Shelters.class);
         startActivity(intent);
     }
 }
