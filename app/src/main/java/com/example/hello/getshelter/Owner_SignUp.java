@@ -119,7 +119,9 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
                     String id=databaseOwner.push().getKey();
                     Owner own= new Owner(id,Name,Password,Email,Mobile);
 
-                    databaseOwner.child(id).setValue(own);
+                   // databaseOwner.child(id).setValue(own);
+                    String uid = task.getResult().getUser().getUid();
+                    databaseOwner.child(uid).setValue(own);
                     Toast.makeText(getApplicationContext(), "Account Created Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                 }else {

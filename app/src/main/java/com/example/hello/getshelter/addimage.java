@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -51,6 +52,7 @@ import java.util.UUID;
 public class addimage extends AppCompatActivity {
         FirebaseStorage storage;
         StorageReference storageReference;
+        private FirebaseAuth mAuth;
 
         private Button btnChoose,btnUpload;
         private ImageView imageview;
@@ -66,6 +68,8 @@ public class addimage extends AppCompatActivity {
             btnChoose = (Button) findViewById(R.id.btnChoose);
             imageview = (ImageView) findViewById(R.id.imgView);
             btnUpload = (Button) findViewById(R.id.save);
+            mAuth=FirebaseAuth.getInstance();
+
 
             storage = FirebaseStorage.getInstance();
             storageReference = storage.getReference();
@@ -76,7 +80,6 @@ public class addimage extends AppCompatActivity {
                     chooseImage();
                 }
             });
-
             btnUpload.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -84,13 +87,7 @@ public class addimage extends AppCompatActivity {
                 }
             });
 
-           btnUpload=(Button) findViewById(R.id.save);
-           btnUpload.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    openOwnerPage();
-                }
-            });
+
         }
 
         public void openOwnerPage(){
@@ -133,8 +130,9 @@ public class addimage extends AppCompatActivity {
                 final ProgressDialog progressDialog = new ProgressDialog(this);
                 progressDialog.setTitle("Uploading...");
                 progressDialog.show();
+                String user_id = mAuth.getCurrentUser().getUid();
 
-                StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+                StorageReference ref = storageReference.child(user_id.toString()+".JPEG");
                 ref.putFile(filePath)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -156,6 +154,10 @@ public class addimage extends AppCompatActivity {
                                 double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
                                         .getTotalByteCount());
                                 progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                                if (progress==100){
+                                    openOwnerPage();
+                                }
+
                             }
                         });
             }
