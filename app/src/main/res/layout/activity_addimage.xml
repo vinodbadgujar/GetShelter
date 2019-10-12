@@ -39,7 +39,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <EditText
         android:id="@+id/maximumpeople"
@@ -56,8 +56,60 @@
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.385" />
+        app:layout_constraintVertical_bias="0.225" />
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="385dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Select or Capture Image"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.328" />
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="340dp"
+        android:layout_height="281dp"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.76" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_style"
+        android:text="Save"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.987" />
+
 
 </android.support.constraint.ConstraintLayout>
