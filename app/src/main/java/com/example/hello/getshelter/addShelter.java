@@ -63,13 +63,15 @@ public class addShelter extends AppCompatActivity {
             slandmark.requestFocus();
             return;
         }
-
+        else{
             String u_id=mAuth.getCurrentUser().getUid();
             databaseShelter = FirebaseDatabase.getInstance().getReference().child("Shelters").child(u_id);
             databaseShelter.child("Place").setValue(place);
             databaseShelter.child("City").setValue(city);
             databaseShelter.child("Pincode").setValue(pincode);
             databaseShelter.child("Landmark").setValue(landmark);
+        }
+
 
     }
 
