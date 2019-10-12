@@ -118,9 +118,11 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     String id=databaseCustomer.push().getKey();
-                    Customer cust= new Customer(id,Name,Password,Email,Mobile);
+                    Customer cust= new Customer(Name,Password,Email,Mobile);
+                    String uid = task.getResult().getUser().getUid();
+                    databaseCustomer.child(uid).setValue(cust);
 
-                    databaseCustomer.child(id).setValue(cust);
+                    //databaseCustomer.child(id).setValue(cust);
                     Toast.makeText(getApplicationContext(), "Account Created Successfully", Toast.LENGTH_SHORT).show();
 
 
@@ -137,7 +139,7 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
     }
 
     class Customer{
-        String CustomerId;
+       // String CustomerId;
         String Name;
         String Password;
         String Email ;
@@ -147,18 +149,18 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
 
         }
 
-        public Customer(String customerId, String name, String password, String email, String mobile) {
-            this.CustomerId = customerId;
+        public Customer( String name, String password, String email, String mobile) {
+
             this.Name = name;
             this.Password = password;
             this.Email = email;
             this.Mobile = mobile;
         }
 
-        public String getCustomerId() {
+       /*public String getCustomerId() {
             return CustomerId;
         }
-
+         */
         public String getName() {
             return Name;
         }

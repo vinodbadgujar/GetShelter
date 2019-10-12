@@ -64,7 +64,7 @@
 
     <Button
         android:id="@+id/btnChoose"
-        android:layout_width="385dp"
+        android:layout_width="0dp"
         android:layout_height="54dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="8dp"
