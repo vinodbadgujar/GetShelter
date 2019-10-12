@@ -19,7 +19,6 @@
         <activity android:name=".Owner_SignUp" />
         <activity android:name=".Customer_SignUp" />
         <activity android:name=".Customer_Login" />
-        <activity android:name=".Customer_login" />
         <activity android:name=".Owner_Login" />
         <activity android:name=".HomeActivity" />
         <activity
