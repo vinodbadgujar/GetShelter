@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -19,7 +20,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Customer_SignUp extends AppCompatActivity implements View.OnClickListener {
+
+
+public class Customer_SignUp extends AppCompatActivity {
     ProgressBar progressBar;
     EditText editTextName, editTextEmail, editTextPassword, editTextPhone, editTextCnfPass;
 
@@ -45,8 +48,12 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
         mAuth = FirebaseAuth.getInstance();
-        findViewById(R.id.button5).setOnClickListener(this);
+        Button b = (Button) findViewById(R.id.button5);
+
+
     }
+
+
 
     private void registerUser(){
         final String Name = editTextName.getText().toString().trim();
@@ -118,28 +125,27 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     String id=databaseCustomer.push().getKey();
-                    Customer cust= new Customer(Name,Password,Email,Mobile);
-                    String uid = task.getResult().getUser().getUid();
-                    databaseCustomer.child(uid).setValue(cust);
+                    Customer cust= new Customer(id,Name,Password,Email,Mobile);
 
-                    //databaseCustomer.child(id).setValue(cust);
+                    databaseCustomer.child(id).setValue(cust);
                     Toast.makeText(getApplicationContext(), "Account Created Successfully", Toast.LENGTH_SHORT).show();
 
 
                     startActivity(intent);
-                 }else {
-                   if (task.getException() instanceof FirebaseAuthUserCollisionException){
-                       Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
-                   }else {
-                       Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                   }
+                }else {
+                    if (task.getException() instanceof FirebaseAuthUserCollisionException){
+                        editTextEmail.requestFocus();
+                        Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
     }
 
     class Customer{
-       // String CustomerId;
+        String CustomerId;
         String Name;
         String Password;
         String Email ;
@@ -149,18 +155,18 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
 
         }
 
-        public Customer( String name, String password, String email, String mobile) {
-
+        public Customer(String customerId, String name, String password, String email, String mobile) {
+            this.CustomerId = customerId;
             this.Name = name;
             this.Password = password;
             this.Email = email;
             this.Mobile = mobile;
         }
 
-       /*public String getCustomerId() {
+        public String getCustomerId() {
             return CustomerId;
         }
-         */
+
         public String getName() {
             return Name;
         }
@@ -178,12 +184,11 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    @Override
-    public void onClick(View view) {
-           switch (view.getId()){
-               case R.id.button5:
-                    registerUser();
-                   break;
-           }
+    public void registerCustomer(View v){
+        registerUser();
+        Intent i = new Intent(Customer_SignUp.this, CustomerPage.class);
+        startActivity(i);
     }
+
 }
+

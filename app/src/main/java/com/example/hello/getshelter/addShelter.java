@@ -42,38 +42,7 @@ public class addShelter extends AppCompatActivity {
     }
 
 
-    private void addhome(String place, String city, String pincode, String landmark) {
-        if(place.isEmpty()){
-            splace.setError("Required");
-            splace.requestFocus();
-            return;
-        }
-        if(city.isEmpty()){
-            scity.setError("Required");
-            scity.requestFocus();
-            return;
-        }
-        if(pincode.isEmpty()){
-            spincode.setError("Required");
-            spincode.requestFocus();
-            return;
-        }
-        if(landmark.isEmpty()){
-            slandmark.setError("Required");
-            slandmark.requestFocus();
-            return;
-        }
-        else{
-            String u_id=mAuth.getCurrentUser().getUid();
-            databaseShelter = FirebaseDatabase.getInstance().getReference().child("Shelters").child(u_id);
-            databaseShelter.child("Place").setValue(place);
-            databaseShelter.child("City").setValue(city);
-            databaseShelter.child("Pincode").setValue(pincode);
-            databaseShelter.child("Landmark").setValue(landmark);
-        }
 
-
-    }
 
     public void next(View view) {
         final String Place = splace.getText().toString().trim();
@@ -81,7 +50,36 @@ public class addShelter extends AppCompatActivity {
         final String Pincode = spincode.getText().toString().trim();
         final String Landmark = slandmark.getText().toString().trim();
 
-        addhome(Place,City,Pincode,Landmark);
+        if(Place.isEmpty()){
+            splace.setError("Required");
+            splace.requestFocus();
+            return;
+        }
+        if(City.isEmpty()){
+            scity.setError("Required");
+            scity.requestFocus();
+            return;
+        }
+        if(Pincode.isEmpty()){
+            spincode.setError("Required");
+            spincode.requestFocus();
+            return;
+        }
+        if(Landmark.isEmpty()){
+            slandmark.setError("Required");
+            slandmark.requestFocus();
+            return;
+        }
+        else{
+            String u_id=mAuth.getCurrentUser().getUid();
+            databaseShelter = FirebaseDatabase.getInstance().getReference().child("Shelters").child(u_id);
+            databaseShelter.child("Place").setValue(Place);
+            databaseShelter.child("City").setValue(City);
+            databaseShelter.child("Pincode").setValue(Pincode);
+            databaseShelter.child("Landmark").setValue(Landmark);
+        }
+
+
         Intent intent =new Intent(this,addimage.class);
         startActivity(intent);
     }

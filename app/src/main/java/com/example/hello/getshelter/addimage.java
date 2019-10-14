@@ -163,7 +163,7 @@ public class addimage extends AppCompatActivity {
                 progressDialog.show();
                 String user_id = mAuth.getCurrentUser().getUid();
 
-                StorageReference ref = storageReference.child(user_id.toString()+".JPEG");
+                StorageReference ref = storageReference.child(user_id.toString());
                 ref.putFile(filePath)
                         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
