@@ -28,7 +28,6 @@ public class all_Shelters extends AppCompatActivity {
     private TextView capacity;
     private TextView landmark;
     private TextView pincode;
-    FirebaseStorage storage= FirebaseStorage.getInstance();
 
 
 
@@ -74,10 +73,6 @@ public class all_Shelters extends AppCompatActivity {
                 pincode.setText("Pincode:  "+vpincode);
 
             }catch(Exception e){
-
-                Toast.makeText(getApplicationContext(), "No Data found,Add Shelter", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(all_Shelters.this,OwnerPage.class);
-                startActivity(intent);
 
             }
 

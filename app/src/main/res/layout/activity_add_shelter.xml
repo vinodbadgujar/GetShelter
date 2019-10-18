@@ -104,7 +104,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_style"
-        android:onClick="next"
         android:text="Next"
         android:textColor="#FFFFFF"
         android:textSize="24sp"

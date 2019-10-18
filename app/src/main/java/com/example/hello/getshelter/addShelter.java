@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class addShelter extends AppCompatActivity {
+public class addShelter extends AppCompatActivity implements View.OnClickListener {
     Button b11;
     EditText splace,scity,spincode,slandmark,smobno;
 
@@ -36,16 +36,14 @@ public class addShelter extends AppCompatActivity {
 
         databaseShelter= FirebaseDatabase.getInstance().getReference("Shelters");
 
-//        b11=(Button) findViewById(R.id.next1);
+        findViewById(R.id.next1).setOnClickListener(this);
 
-        //databaseOwner = FirebaseDatabase.getInstance().getReference("Owners");
 
     }
 
 
-
-
-    public void next(View view) {
+    @Override
+    public void onClick(View v) {
         final String Place = splace.getText().toString().trim();
         final String City = scity.getText().toString().trim();
         final String Pincode = spincode.getText().toString().trim();

@@ -100,33 +100,23 @@ public class addimage extends AppCompatActivity {
 
     }
 
-    private void adddetails(String cost, String peoples) {
-        if(cost.isEmpty()){
-            scost.setError("Required");
-            scost.requestFocus();
-            return;
-        }
-        if(peoples.isEmpty()){
-            scost.setError("Required");
-            speoples.requestFocus();
-            return;
-        }
-        else{
+    public void openOwnerPage(String cost,String peoples){
+
             String u_id=mAuth.getCurrentUser().getUid();
             databaseShelter = FirebaseDatabase.getInstance().getReference().child("Shelters").child(u_id);
             databaseShelter.child("Cost").setValue(cost);
             databaseShelter.child("maximum_peoples").setValue(peoples);
-        }
+            Intent intent=new Intent(this,OwnerPage.class);
+            startActivity(intent);
 
 
-    }
 
-    public void openOwnerPage(){
-        Intent intent=new Intent(this,OwnerPage.class);
-        startActivity(intent);
+
     }
 
     private void chooseImage() {
+
+
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -155,6 +145,19 @@ public class addimage extends AppCompatActivity {
     }
 
     private void uploadImage() {
+
+        final String cost = scost.getText().toString().trim();
+        final String peoples = speoples.getText().toString().trim();
+        if(cost.isEmpty()){
+            scost.setError("Required");
+            scost.requestFocus();
+            return;
+        }
+        if(peoples.isEmpty()){
+            speoples.setError("Required");
+            speoples.requestFocus();
+            return;
+        }
 
         if(filePath != null)
         {
@@ -186,18 +189,15 @@ public class addimage extends AppCompatActivity {
                                     .getTotalByteCount());
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                             if (progress==100){
-                                final String cost = scost.getText().toString().trim();
-                                final String peoples = speoples.getText().toString().trim();
 
-                                adddetails(cost,peoples);
-                                openOwnerPage();
+
+                                openOwnerPage(cost,peoples);
                             }
 
                         }
                     });
         }
+
+
     }
-
-
-
 }
