@@ -3,51 +3,80 @@ package com.example.hello.getshelter;
 import android.widget.ImageView;
 
 public class Product {
-    private String pplace;
-    private String pcity;
-    private String pcost;
-    private String plandmark;
-    private String pcapacity;
-    private String ppincode;
-    private ImageView pimages;
-    private String pnumber;
+    private String Place;
+    private String City;
+    private String Cost;
+    private String Landmark;
+    private String maximum_peoples;
+    private String Pincode;
+    private String Mobile ;
 
-    public Product(String pplace, String pcost, String pcapacity, String pnumber
-    ) {
-        this.pplace = pplace;
-        this.pcost = pcost;
-        this.pcapacity = pcapacity;
-        this.pnumber=pnumber;
+    public Product() {
+
     }
 
-    public String getPplace() {
-        return pplace;
+    public Product(String city, String cost, String maximum_peoples, String mobile) {
+        City=city;
+        Cost = cost;
+        this.maximum_peoples = maximum_peoples;
+        Mobile = mobile;
     }
 
-    public String getPcity() {
-        return pcity;
+    public void setMobile(String mobile) {
+        Mobile = mobile;
     }
 
-    public String getPcost() {
-        return pcost;
+    public String getMobile() {
+        return Mobile;
     }
 
-    public String getPlandmark() {
-        return plandmark;
+    public String getPlace() {
+        return Place;
     }
 
-    public String getPcapacity() {
-        return pcapacity;
+    public String getCity() {
+        return City;
     }
 
-    public String getPpincode() {
-        return ppincode;
+    public String getCost() {
+        return Cost;
     }
 
-    public ImageView getPimages() {
-        return pimages;
+    public String getLandmark() {
+        return Landmark;
     }
-    public String getPnumber() {
-        return pnumber;
+
+    public String getMaximum_peoples() {
+        return maximum_peoples;
     }
+
+    public String getPincode() {
+        return Pincode;
+    }
+
+
+    public void setPlace(String place) {
+        Place = place;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    public void setCost(String cost) {
+        Cost = cost;
+    }
+
+    public void setLandmark(String landmark) {
+        Landmark = landmark;
+    }
+
+    public void setMaximum_peoples(String maximum_peoples) {
+        this.maximum_peoples = maximum_peoples;
+    }
+
+    public void setPincode(String pincode) {
+        Pincode = pincode;
+    }
+
 }

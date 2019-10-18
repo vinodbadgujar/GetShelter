@@ -18,7 +18,7 @@ public class  CustomerPage extends AppCompatActivity {
         ActionBar actionBar= getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.ic_launcher);
-        b1 = (Button) findViewById(R.id.button2);
+        b1 = (Button) findViewById(R.id.cust_search);
 
 
     }

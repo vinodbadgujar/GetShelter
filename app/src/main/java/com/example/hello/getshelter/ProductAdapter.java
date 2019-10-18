@@ -9,57 +9,49 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextClock;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
+ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHolder> {
 
-    private Context mtx;
-    private List<Product> productList;
+     ArrayList<Product> list;
+     public ProductAdapter(ArrayList<Product> list){
+         this.list=list;
+     }
 
-    public ProductAdapter(Context mtx, List<Product> productList) {
-        this.mtx = mtx;
-        this.productList = productList;
-    }
+     @NonNull
+     @Override
+     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+         View view =LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_view,viewGroup,false);
+         return new MyViewHolder(view);
+     }
 
-    @NonNull
-    @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater=LayoutInflater.from(mtx);
-        View view=inflater.inflate(R.layout.list_view,null);
-        ProductViewHolder holder=new ProductViewHolder(view);
+     @Override
+     public void onBindViewHolder(@NonNull MyViewHolder holder, int i) {
+         holder.city.setText("City: "+list.get(i).getCity());
+         holder.cost.setText("Cost/Day: INR "+list.get(i).getCost());
+         holder.capacity.setText("Max Capacity: "+list.get(i).getMaximum_peoples());
+         holder.number.setText("Mobile Number: "+list.get(i).getMobile());
+     }
 
-        return holder;
-    }
+     @Override
+     public int getItemCount() {
+         return list.size();
+     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product=productList.get(position);
-        holder.place.setText(product.getPplace());
-        holder.cost.setText(product.getPcost());
-        holder.capacity.setText(product.getPcapacity());
-        holder.number.setText(product.getPnumber());
+     class MyViewHolder extends RecyclerView.ViewHolder{
+         TextView city,cost,capacity,number;
+         public MyViewHolder(View itemView) {
+             super(itemView);
+             city= itemView.findViewById(R.id.shw_place);
+             cost= itemView.findViewById(R.id.shw_cost);
+             capacity= itemView.findViewById(R.id.shw_capacity);
+             number= itemView.findViewById(R.id.shw_number);
 
-    }
+         }
+     }
 
-    @Override
-    public int getItemCount() {
-        return productList.size();
-    }
-
-    class ProductViewHolder extends RecyclerView.ViewHolder{
-
-        EditText place,city,landmark,pincode,cost,capacity,number;
-        ImageView imageView;
-
-        public ProductViewHolder(View itemView) {
-            super(itemView);
-            place=itemView.findViewById(R.id.shw_place);
-            cost=itemView.findViewById(R.id.shw_cost);
-            capacity=itemView.findViewById(R.id.shw_capacity);
-            number=itemView.findViewById(R.id.shw_number);
-            imageView=itemView.findViewById(R.id.imageView);
-
-        }
-    }
 }

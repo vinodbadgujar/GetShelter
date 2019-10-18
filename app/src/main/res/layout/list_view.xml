@@ -15,55 +15,50 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="113dp"
-                android:layout_height="116dp"
-                android:padding="4dp" />
-
             <TextView
                 android:id="@+id/shw_place"
                 android:layout_width="243dp"
                 android:layout_height="22dp"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_gravity="end"
                 android:text="Apple MacBook Air Core i5 5th Gen - (8 GB/128 GB SSD/Mac OS Sierra)"
+                android:textAllCaps="true"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
 
             <TextView
                 android:id="@+id/shw_capacity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/shw_place"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_marginTop="6dp"
                 android:text="13.3 Inch, 256 GB"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
-
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shw_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/shw_capacity"
-                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
                 android:text="INR 56990"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/shw_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/shw_cost"
-                android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
                 android:text="INR 56990"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>

@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class addShelter extends AppCompatActivity {
     Button b11;
-    EditText splace,scity,spincode,slandmark;
+    EditText splace,scity,spincode,slandmark,smobno;
 
     private FirebaseAuth mAuth;
     DatabaseReference databaseShelter;
@@ -31,6 +31,7 @@ public class addShelter extends AppCompatActivity {
         scity = (EditText) findViewById(R.id.sheltercity);
         spincode = (EditText) findViewById(R.id.pincode);
         slandmark = (EditText) findViewById(R.id.landmark);
+        smobno=(EditText) findViewById(R.id.mob);
         mAuth = FirebaseAuth.getInstance();
 
         databaseShelter= FirebaseDatabase.getInstance().getReference("Shelters");
@@ -49,6 +50,7 @@ public class addShelter extends AppCompatActivity {
         final String City = scity.getText().toString().trim();
         final String Pincode = spincode.getText().toString().trim();
         final String Landmark = slandmark.getText().toString().trim();
+        final String Mobile = smobno.getText().toString().trim();
 
         if(Place.isEmpty()){
             splace.setError("Required");
@@ -65,11 +67,28 @@ public class addShelter extends AppCompatActivity {
             spincode.requestFocus();
             return;
         }
+        if(Pincode.length()!=6){
+            spincode.setError("Invalid Pincode");
+            spincode.requestFocus();
+            return;
+        }
+
         if(Landmark.isEmpty()){
             slandmark.setError("Required");
             slandmark.requestFocus();
             return;
         }
+        if (Mobile.isEmpty()){
+            smobno.setError("Mobile is required");
+            smobno.requestFocus();
+            return;
+        }
+        if (Mobile.length()<10 || Mobile.length()>10){
+            smobno.setError("Invalid Mobile Number");
+            smobno.requestFocus();
+            return;
+        }
+
         else{
             String u_id=mAuth.getCurrentUser().getUid();
             databaseShelter = FirebaseDatabase.getInstance().getReference().child("Shelters").child(u_id);
@@ -77,6 +96,7 @@ public class addShelter extends AppCompatActivity {
             databaseShelter.child("City").setValue(City);
             databaseShelter.child("Pincode").setValue(Pincode);
             databaseShelter.child("Landmark").setValue(Landmark);
+            databaseShelter.child("Mobile").setValue(Mobile);
         }
 
 

@@ -1,10 +1,13 @@
 package com.example.hello.getshelter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.squareup.picasso.Picasso;
 
 
@@ -19,15 +22,14 @@ import com.google.firebase.storage.StorageReference;
 
 public class all_Shelters extends AppCompatActivity {
 
-    private ImageView image;
     private TextView place;
     private TextView city;
     private TextView cost;
     private TextView capacity;
     private TextView landmark;
     private TextView pincode;
-    FirebaseStorage storage= FirebaseStorage.getInstance();;
-    StorageReference storageReference = storage.getReference();;
+    FirebaseStorage storage= FirebaseStorage.getInstance();
+
 
 
 
@@ -45,7 +47,6 @@ public class all_Shelters extends AppCompatActivity {
 
         getShelterInfo= FirebaseDatabase.getInstance().getReference().child("Shelters").child(cur_user);
 
-        image=(ImageView)findViewById(R.id.pic);
         place=(TextView)findViewById(R.id.all_place);
         city=(TextView)findViewById(R.id.all_city);
         cost=(TextView)findViewById(R.id.all_cost);
@@ -53,14 +54,11 @@ public class all_Shelters extends AppCompatActivity {
         landmark=(TextView)findViewById(R.id.all_lmark);
         pincode=(TextView)findViewById(R.id.all_pin);
 
-        storageReference = storage.getReferenceFromUrl("gs://getshelter.appspot.com");
-        String userId = mAuth.getCurrentUser().getUid().toString();
-        Picasso.with(all_Shelters.this).load(storageReference + userId).into(image);
-
-
         getShelterInfo.addValueEventListener(new ValueEventListener() {
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {try{
+
                 String vplace=dataSnapshot.child("Place").getValue().toString();
                 String vcity=dataSnapshot.child("City").getValue().toString();
                 String vcost=dataSnapshot.child("Cost").getValue().toString();
@@ -75,8 +73,17 @@ public class all_Shelters extends AppCompatActivity {
                 landmark.setText("Landmark:  "+vlandmark);
                 pincode.setText("Pincode:  "+vpincode);
 
+            }catch(Exception e){
+
+                Toast.makeText(getApplicationContext(), "No Data found,Add Shelter", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(all_Shelters.this,OwnerPage.class);
+                startActivity(intent);
 
             }
+
+
+            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

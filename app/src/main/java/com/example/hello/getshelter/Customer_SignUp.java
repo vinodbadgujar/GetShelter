@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 
-public class Customer_SignUp extends AppCompatActivity {
+public class Customer_SignUp extends AppCompatActivity implements View.OnClickListener {
     ProgressBar progressBar;
     EditText editTextName, editTextEmail, editTextPassword, editTextPhone, editTextCnfPass;
 
@@ -48,7 +48,7 @@ public class Customer_SignUp extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
 
         mAuth = FirebaseAuth.getInstance();
-        Button b = (Button) findViewById(R.id.button5);
+        findViewById(R.id.button5).setOnClickListener(this);
 
 
     }
@@ -183,11 +183,13 @@ public class Customer_SignUp extends AppCompatActivity {
             return Mobile;
         }
     }
-
-    public void registerCustomer(View v){
-        registerUser();
-        Intent i = new Intent(Customer_SignUp.this, CustomerPage.class);
-        startActivity(i);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button5:
+                registerUser();
+                break;
+        }
     }
 
 }
