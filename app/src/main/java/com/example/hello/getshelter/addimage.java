@@ -3,6 +3,7 @@ package com.example.hello.getshelter;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -75,6 +76,10 @@ public class addimage extends AppCompatActivity {
         btnChoose = (Button) findViewById(R.id.btnChoose);
         imageview = (ImageView) findViewById(R.id.imgView);
         btnUpload = (Button) findViewById(R.id.save);
+
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.ic_launcher);
 
 
         mAuth=FirebaseAuth.getInstance();

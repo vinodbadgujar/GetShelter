@@ -3,6 +3,7 @@ package com.example.hello.getshelter;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +30,10 @@ public class Search_Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__result);
         reference=FirebaseDatabase.getInstance().getReference().child("Shelters");
+
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.ic_launcher);
 
         recyclerView=findViewById(R.id.recycler_view);
         searchView= findViewById(R.id.search_view);

@@ -2,6 +2,7 @@ package com.example.hello.getshelter;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -40,6 +41,10 @@ public class all_Shelters extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all__shelters);
         mAuth=FirebaseAuth.getInstance();
+
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.ic_launcher);
 
         final String cur_user=mAuth.getCurrentUser().getUid();
 
