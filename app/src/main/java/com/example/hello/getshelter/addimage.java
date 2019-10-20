@@ -108,7 +108,7 @@ public class addimage extends AppCompatActivity {
             databaseShelter.child("maximum_peoples").setValue(peoples);
             Intent intent=new Intent(this,OwnerPage.class);
             startActivity(intent);
-
+            finish();
 
 
 

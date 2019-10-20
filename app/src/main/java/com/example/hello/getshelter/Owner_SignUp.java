@@ -124,6 +124,7 @@ public class Owner_SignUp extends AppCompatActivity implements View.OnClickListe
                     databaseOwner.child(uid).setValue(own);
                     Toast.makeText(getApplicationContext(), "Account Created Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
+                    finish();
                 }else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException){
                         Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();

@@ -132,6 +132,7 @@ public class Customer_SignUp extends AppCompatActivity implements View.OnClickLi
 
 
                     startActivity(intent);
+                    finish();
                 }else {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException){
                         editTextEmail.requestFocus();

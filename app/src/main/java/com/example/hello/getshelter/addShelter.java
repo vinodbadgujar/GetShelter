@@ -100,5 +100,6 @@ public class addShelter extends AppCompatActivity implements View.OnClickListene
 
         Intent intent =new Intent(this,addimage.class);
         startActivity(intent);
+        finish();
     }
 }

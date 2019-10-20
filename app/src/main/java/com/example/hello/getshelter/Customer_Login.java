@@ -85,6 +85,7 @@ public class Customer_Login extends AppCompatActivity implements View.OnClickLis
                     Intent intent = new Intent(Customer_Login.this, CustomerPage.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 }else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }

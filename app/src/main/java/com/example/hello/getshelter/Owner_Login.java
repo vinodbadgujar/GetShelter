@@ -90,6 +90,7 @@ public class Owner_Login extends AppCompatActivity implements View.OnClickListen
                     Intent intent = new Intent(Owner_Login.this, OwnerPage.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 }else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
