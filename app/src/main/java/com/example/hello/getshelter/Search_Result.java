@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -34,6 +35,10 @@ public class Search_Result extends AppCompatActivity implements ProductAdapter.o
     ImageView dial;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        ActionBar actionBar= getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.ic_launcher);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__result);
         reference=FirebaseDatabase.getInstance().getReference().child("Shelters");

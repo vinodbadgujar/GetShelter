@@ -44,7 +44,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
      public void onBindViewHolder(@NonNull MyViewHolder holder, final int i) {
          holder.city.setText("City: "+list.get(i).getCity());
          holder.cost.setText("Cost/Day: INR "+list.get(i).getCost());
-         holder.capacity.setText("Max Capacity: "+list.get(i).getMaximum_peoples());
+         holder.capacity.setText("Max Capacity: "+list.get(i).getMaximum_peoples()+" People");
          holder.number.setText("Mobile Number: "+list.get(i).getMobile());
 
      }

@@ -12,8 +12,11 @@ import android.widget.Button;
 
 public class OwnerPage extends AppCompatActivity {
     private Button b1,b2;
+    static OwnerPage ownerPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ownerPage=this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_page);
         ActionBar actionBar= getSupportActionBar();
@@ -35,6 +38,10 @@ public class OwnerPage extends AppCompatActivity {
                 openallshelter();
             }
         });
+    }
+
+    public static OwnerPage getInstance(){
+        return   ownerPage;
     }
     public void openAddshelter(){
         Intent intent=new Intent(this,addShelter.class);

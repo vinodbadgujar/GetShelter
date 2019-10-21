@@ -107,6 +107,7 @@ public class all_Shelters extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent=new Intent(this,HomeActivity.class);
         this.startActivity(intent);
+        OwnerPage.getInstance().finish();
         finish();
         return true;
     }
