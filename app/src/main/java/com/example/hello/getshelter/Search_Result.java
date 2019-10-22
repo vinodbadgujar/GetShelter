@@ -96,12 +96,14 @@ public class Search_Result extends AppCompatActivity implements ProductAdapter.o
         ArrayList<Product> myList=new ArrayList<>();
         for (Product object:list){
             if (object.getCity().toLowerCase().contains(str.toLowerCase())||object.getPlace().toLowerCase().contains(str.toLowerCase())){
+
                 myList.add(object);
             }
         }
-
+        list=myList;
         ProductAdapter productAdapter=new ProductAdapter(myList,this);
         recyclerView.setAdapter(productAdapter);
+
     }
 
     @Override
